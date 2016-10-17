@@ -10,13 +10,9 @@ module OmniAuth
       attr_reader :access_token
 
       def initialize(app, consumer_key, consumer_secret, options = {}, &block)
-        @xero = Xeroizer::PartnerApplication.new(
+        @xero = Xeroizer::PublicApplication.new(
           consumer_key,
-          consumer_secret,
-          options[:private_key_file],
-          options[:ssl_client_cert],
-          options[:ssl_client_key],
-          options
+          consumer_secret
         )
 
         super(app, consumer_key, consumer_secret, options, &block)
